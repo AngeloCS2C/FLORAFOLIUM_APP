@@ -1,9 +1,11 @@
+// ignore_for_file: avoid_print
+
 import 'package:florafolium_app/screens/about.dart';
 import 'package:florafolium_app/screens/widgets/camera_screen.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,8 @@ class MyHomePage extends StatelessWidget {
           SizedBox(
             width: 50, // Set the width of the icon
             child: PopupMenuButton<String>(
-              icon: const Icon(Icons.language, color: Colors.green, size: 28), // Resize the icon
+              icon: const Icon(Icons.language,
+                  color: Colors.green, size: 28), // Resize the icon
               onSelected: (String value) {
                 // Handle the language change here
                 print('Selected language: $value');
@@ -62,8 +65,8 @@ class MyHomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: const CameraScreen(),
+      body: const Center(
+        child: CameraScreen(),
       ),
     );
   }

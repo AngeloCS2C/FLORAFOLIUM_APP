@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'dart:io';
 import 'package:florafolium_app/model.dart'; // Import your model file here
 import 'package:flutter/material.dart';
@@ -5,13 +7,13 @@ import 'package:flutter/material.dart';
 class ImagePreview extends StatefulWidget {
   final String imagePath;
 
-  const ImagePreview({Key? key, required this.imagePath}) : super(key: key);
+  const ImagePreview({super.key, required this.imagePath});
 
   @override
-  _ImagePreviewState createState() => _ImagePreviewState();
+  ImagePreviewState createState() => ImagePreviewState();
 }
 
-class _ImagePreviewState extends State<ImagePreview> {
+class ImagePreviewState extends State<ImagePreview> {
   late List? result; // To store the prediction result
   bool isLoading = true; // To track the loading state
   String? errorMessage; // To store any errors that occur
@@ -24,7 +26,8 @@ class _ImagePreviewState extends State<ImagePreview> {
 
   Future<void> _predictImage() async {
     try {
-      final prediction = await Model.predict(widget.imagePath); // Call the predict method
+      final prediction =
+          await Model.predict(widget.imagePath); // Call the predict method
 
       setState(() {
         result = prediction;
@@ -83,42 +86,42 @@ class _ImagePreviewState extends State<ImagePreview> {
                 textAlign: TextAlign.center,
               )
             else if (result != null && result!.isNotEmpty) ...[
-                Text(
-                  "Prediction: ${result![0]['label']}",
-                  style: const TextStyle(fontSize: 20, color: Colors.green),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  "Plant Name: ${result![0]['plantName']}",
-                  style: const TextStyle(fontSize: 18),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  "Scientific Name: ${result![0]['scientificName']}",
-                  style: const TextStyle(fontSize: 16),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  "Description: ${result![0]['description']}",
-                  style: const TextStyle(fontSize: 16),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  "Prediction Percentage: ${result![0]['confidence']}%",
-                  style: const TextStyle(fontSize: 16, color: Colors.blue),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 20),
-              ] else
-                const Text(
-                  "No result received from the model.",
-                  style: TextStyle(fontSize: 18, color: Colors.red),
-                  textAlign: TextAlign.center,
-                ),
+              Text(
+                "Prediction: ${result![0]['label']}",
+                style: const TextStyle(fontSize: 20, color: Colors.green),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 10),
+              Text(
+                "Plant Name: ${result![0]['plantName']}",
+                style: const TextStyle(fontSize: 18),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 10),
+              Text(
+                "Scientific Name: ${result![0]['scientificName']}",
+                style: const TextStyle(fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 10),
+              Text(
+                "Description: ${result![0]['description']}",
+                style: const TextStyle(fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 10),
+              Text(
+                "Prediction Percentage: ${result![0]['confidence']}%",
+                style: const TextStyle(fontSize: 16, color: Colors.blue),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 20),
+            ] else
+              const Text(
+                "No result received from the model.",
+                style: TextStyle(fontSize: 18, color: Colors.red),
+                textAlign: TextAlign.center,
+              ),
           ],
         ),
       ),
